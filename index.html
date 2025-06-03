@@ -3,20 +3,418 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mercy Okocha's professional portfolio showcasing mobile and web projects built with Xamarin and ASP.NET Core.">
-  <title>Mercy Okocha | Portfolio</title>
+  <meta name="description" content="Mercy Okocha - Innovative Full-Stack .NET Developer specializing in Xamarin and ASP.NET Core solutions">
+  <title>Mercy Okocha | .NET Developer Portfolio</title>
   <link rel="icon" href="Images/favicon.png" type="image/png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Segoe UI', sans-serif; }
-    .hero { background-color: #f8f9fa; padding: 60px 20px; text-align: center; }
-    .project-card { box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: 0.3s; }
-    .project-card:hover { transform: scale(1.02); }
+    :root {
+      --primary-color: #2E7D32; /* Deep green */
+      --secondary-color: #1B5E20; /* Darker green */
+      --dark-color: #263238; /* Dark slate */
+      --light-color: #F5F5DC; /* Beige */
+      --accent-color: #8BC34A; /* Light green accent */
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark-color);
+      background-color: var(--light-color);
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      background-color: var(--secondary-color) !important;
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white !important;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      margin: 0 10px;
+      position: relative;
+      color: rgba(255,255,255,0.8) !important;
+    }
+    
+    .nav-link:hover {
+      color: white !important;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+      opacity: 0.3;
+    }
+    
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    
+    .hero-content {
+      flex: 1;
+      padding-right: 50px;
+      animation: fadeInLeft 1s ease;
+    }
+    
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      animation: fadeInRight 1s ease;
+    }
+    
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border: 5px solid rgba(255,255,255,0.1);
+    }
+    
+    .hero h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .btn-primary {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(43, 108, 35, 0.3);
+    }
+    
+    .btn-outline-secondary {
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .btn-outline-secondary:hover {
+      background-color: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 60px;
+      position: relative;
+      display: inline-block;
+      color: var(--secondary-color);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 4px;
+      background-color: var(--accent-color);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .project-card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+      background-color: white;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .project-card .card-body {
+      padding: 30px;
+    }
+    
+    .project-card .card-title {
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--dark-color);
+    }
+    
+    .badge {
+      background-color: var(--primary-color);
+      margin-right: 5px;
+      margin-bottom: 5px;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: white;
+    }
+    
+    .testimonial {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 60px;
+      color: rgba(46, 125, 50, 0.1);
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .blockquote-footer {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .contact-info {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    
+    .contact-info i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .social-links {
+      margin-top: 30px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+    
+    footer {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 30px 0;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .skill-item {
+      background-color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      color: var(--primary-color);
+    }
+    
+    .skill-item i {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+    
+    .bg-light {
+      background-color: var(--light-color) !important;
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .hero-container {
+        flex-direction: column;
+      }
+      
+      .hero-content {
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .hero-image {
+        margin-top: 30px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      section {
+        padding: 60px 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">Mercy Okocha</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -25,6 +423,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
@@ -32,100 +431,273 @@
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Hi, I'm Mercy Christopher Okocha</h1>
-    <p>Full-Stack .NET Developer | Xamarin & ASP.NET Enthusiast</p>
-    <a href="#projects" class="btn btn-success mt-3">Explore My Work</a>
-    <br><br>
-    <a href="Doc/Mercy_Okocha_Resume.pdf" class="btn btn-outline-secondary" download>📄 Download My Resume</a>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1>Hi, I'm Mercy Christopher Okocha</h1>
+        <p>Full-Stack .NET Developer | Xamarin & ASP.NET Specialist</p>
+        <div class="mt-4">
+          <a href="#projects" class="btn btn-primary btn-lg me-3">Explore My Work</a>
+          <a href="Doc/Mercy_Okocha_Resume.pdf" class="btn btn-outline-secondary btn-lg" download>
+            <i class="fas fa-download me-2"></i>Download Resume
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="Images/personalpic.jpg" alt="Mercy Okocha"/>
+      </div>
+    </div>
   </section>
 
-  <section id="projects" class="container my-5">
-    <h2 class="text-center mb-4">Featured Projects</h2>
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="card project-card">
-          <div class="card-body">
-            <h5 class="card-title">FixItNow App</h5>
-            <p class="card-text">A cross-platform handyman booking app with Xamarin, ASP.NET MVC, and Web API. Features include bookings, admin dashboards, and real-time service updates.</p>
-            <h6>Tech Stack:</h6>
-            <p><span class="badge bg-secondary">Xamarin</span> <span class="badge bg-secondary">ASP.NET Core</span> <span class="badge bg-secondary">Web API</span> <span class="badge bg-secondary">SSMS</span></p>
-            <div class="row">
-              <div class="col-6 mb-2"><img src="Images/LoginFixitNow.png" class="img-fluid rounded" alt="Login" /></div>
-              <div class="col-6 mb-2"><img src="Images/SignUpFixItNow.png" class="img-fluid rounded" alt="Signup" /></div>
-              <div class="col-6 mb-2"><img src="Images/AdminDashboard.png" class="img-fluid rounded" alt="Admin Dashboard" /></div>
-              <div class="col-6 mb-2"><img src="Images/Adminwebapp.png" class="img-fluid rounded" alt="Admin Webapp" /></div>
+  <!-- Projects Section -->
+  <section id="projects" class="bg-light">
+    <div class="container">
+      <h2 class="text-center section-title">Featured Projects</h2>
+      <div class="row g-4">
+        <div class="col-lg-4" data-aos="fade-up">
+          <div class="card project-card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="card-title m-0">FixItNow App</h5>
+                <span class="badge bg-success">Featured</span>
+              </div>
+              <p class="card-text">A comprehensive cross-platform handyman booking solution with real-time updates, admin dashboards, and seamless booking experience.</p>
+              <h6 class="mt-4">Tech Stack:</h6>
+              <div class="mb-4">
+                <span class="badge">Xamarin</span>
+                <span class="badge">ASP.NET Core</span>
+                <span class="badge">Web API</span>
+                <span class="badge">SQL Server</span>
+              </div>
+              <div class="row g-2 mb-4">
+                <div class="col-6"><img src="Images/LoginFixitNow.png" class="img-fluid rounded" alt="Login" /></div>
+                <div class="col-6"><img src="Images/SignUpFixItNow.png" class="img-fluid rounded" alt="Signup" /></div>
+                <div class="col-6"><img src="Images/AdminDashboard.png" class="img-fluid rounded" alt="Admin Dashboard" /></div>
+                <div class="col-6"><img src="Images/Adminwebapp.png" class="img-fluid rounded" alt="Admin Webapp" /></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="https://github.com/mercychriz/FixItNow_App" target="_blank" class="btn btn-outline-primary">
+                  <i class="fab fa-github me-2"></i>View Code
+                </a>
+                <a href="#" class="text-muted small">Case Study →</a>
+              </div>
             </div>
-            <a href="https://github.com/mercychriz/FixItNow_App" target="_blank" class="btn btn-outline-primary mt-2">View on GitHub</a>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="card project-card">
-          <div class="card-body">
-            <h5 class="card-title">RecipeApp</h5>
-            <p class="card-text">Mobile App for recipe sharing with image upload, like & comment features. Built with Xamarin & ASP.NET Core API.</p>
-            <h6>Tech Stack:</h6>
-            <p><span class="badge bg-secondary">Xamarin</span> <span class="badge bg-secondary">ASP.NET Core</span> <span class="badge bg-secondary">EF Core</span></p>
-            <div class="row">
-              <div class="col-6 mb-2"><img src="Images/RecipeLandingpage.png" class="img-fluid rounded" alt="Landing Page" /></div>
-              <div class="col-6 mb-2"><img src="Images/ViewRecipes.png" class="img-fluid rounded" alt="View Recipes" /></div>
-              <div class="col-6 mb-2"><img src="Images/Addcomment.png" class="img-fluid rounded" alt="Comment" /></div>
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card project-card h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-3">RecipeApp</h5>
+              <p class="card-text">A social platform for food enthusiasts to share, discover, and interact with recipes through likes and comments.</p>
+              <h6 class="mt-4">Tech Stack:</h6>
+              <div class="mb-4">
+                <span class="badge">Xamarin</span>
+                <span class="badge">ASP.NET Core</span>
+                <span class="badge">EF Core</span>
+                <span class="badge">Azure Blob Storage</span>
+              </div>
+              <div class="row g-2 mb-4">
+                <div class="col-6"><img src="Images/RecipeLandingpage.png" class="img-fluid rounded" alt="Landing Page" /></div>
+                <div class="col-6"><img src="Images/ViewRecipes.png" class="img-fluid rounded" alt="View Recipes" /></div>
+                <div class="col-6"><img src="Images/Addcomment.png" class="img-fluid rounded" alt="Comment" /></div>
+                <div class="col-6 bg-light rounded d-flex align-items-center justify-content-center">
+                  <i class="fas fa-plus text-muted"></i>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="btn btn-outline-primary disabled">
+                  <i class="fas fa-lock me-2"></i>Coming Soon
+                </a>
+                <a href="#" class="text-muted small">Preview →</a>
+              </div>
             </div>
-            <a href="#" class="btn btn-outline-primary mt-2">Coming Soon</a>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="card project-card">
-          <div class="card-body">
-            <h5 class="card-title">HR Automation</h5>
-            <p class="card-text">Web application for HR teams to manage job postings, applications, and internal visibility using ASP.NET Core MVC.</p>
-            <h6>Tech Stack:</h6>
-            <p><span class="badge bg-secondary">ASP.NET MVC</span> <span class="badge bg-secondary">EF Core</span> <span class="badge bg-secondary">Razor Pages</span></p>
-            <div class="row">
-              <div class="col-6 mb-2"><img src="Images/Landingpage.png" class="img-fluid rounded" alt="Landing Page" /></div>
-              <div class="col-6 mb-2"><img src="Images/Dashboard.png" class="img-fluid rounded" alt="Dashboard" /></div>
-              <div class="col-6 mb-2"><img src="Images/Job_Listing.png" class="img-fluid rounded" alt="Job Listing" /></div>
-              <div class="col-6 mb-2"><img src="Images/Admin_landing.png" class="img-fluid rounded" alt="Admin Landing" /></div>
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card project-card h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-3">HR Automation</h5>
+              <p class="card-text">Enterprise-grade HR management system streamlining recruitment, onboarding, and employee data management.</p>
+              <h6 class="mt-4">Tech Stack:</h6>
+              <div class="mb-4">
+                <span class="badge">ASP.NET MVC</span>
+                <span class="badge">EF Core</span>
+                <span class="badge">Razor Pages</span>
+                <span class="badge">Bootstrap 5</span>
+              </div>
+              <div class="row g-2 mb-4">
+                <div class="col-6"><img src="Images/Landingpage.png" class="img-fluid rounded" alt="Landing Page" /></div>
+                <div class="col-6"><img src="Images/Dashboard.png" class="img-fluid rounded" alt="Dashboard" /></div>
+                <div class="col-6"><img src="Images/Job_Listing.png" class="img-fluid rounded" alt="Job Listing" /></div>
+                <div class="col-6"><img src="Images/Admin_landing.png" class="img-fluid rounded" alt="Admin Landing" /></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="https://github.com/mercychriz/HRAutomationWebapp" target="_blank" class="btn btn-outline-primary">
+                  <i class="fab fa-github me-2"></i>View Code
+                </a>
+                <a href="#" class="text-muted small">Live Demo →</a>
+              </div>
             </div>
-            <a href="https://github.com/mercychriz/HRAutomationWebapp" class="btn btn-outline-primary mt-2">View on GitHub</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="container my-5" data-aos="fade-up">
-    <h2 class="text-center mb-4">What People Say</h2>
-    <blockquote class="blockquote text-center">
-      <p>"Mercy's ability to manage projects independently while delivering quality solutions is truly impressive!"</p>
-      <footer class="blockquote-footer">Ceo, Bizdecker.</footer>
-    </blockquote>
-  </section>
-
-  <section id="about" class="container my-5">
-    <h2 class="text-center mb-4">About Me</h2>
-    <p class="text-center">I'm a passionate .NET developer with experience building full-stack solutions across web and mobile platforms. I thrive on turning ideas into working apps using Xamarin, ASP.NET Core, and clean architecture.</p>
-  </section>
-
-  <section id="contact" class="container my-5">
-    <h2 class="text-center mb-4">Contact</h2>
-    <div class="text-center">
-      <p>Email: <strong>mercychris026@gmail.com</strong></p>
-      <p>Phone: <strong>(289) 775-3074</strong></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/mercychristopherokocha0239" target="_blank">My LinkedIn Profile</a></p>
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="text-center section-title">Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-item" data-aos="fade-up">
+          <i class="fab fa-microsoft"></i> .NET Framework/Core
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="50">
+          <i class="fas fa-mobile-alt"></i> Xamarin.Forms
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-globe"></i> ASP.NET MVC
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="150">
+          <i class="fas fa-database"></i> Entity Framework
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-code"></i> C#
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="250">
+          <i class="fab fa-js"></i> JavaScript
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
+          <i class="fab fa-html5"></i> HTML5/CSS3
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="350">
+          <i class="fas fa-server"></i> Web API
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+          <i class="fas fa-database"></i> SQL Server
+        </div>
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="450">
+          <i class="fab fa-git-alt"></i> Git Version Control
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2025 Mercy Christopher Okocha. All Rights Reserved.</p>
+  <!-- Testimonial Section -->
+  <section class="bg-light">
+    <div class="container">
+      <h2 class="text-center section-title">Client Testimonials</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="testimonial">
+            <blockquote class="blockquote">
+              <p>"Mercy delivered our FixItNow mobile app ahead of schedule with exceptional quality. Her deep understanding of Xamarin and .NET architecture allowed her to solve complex problems efficiently. She's a true professional who communicates clearly and takes ownership of her work."</p>
+              <footer class="blockquote-footer mt-3">CEO, <cite>Bizdecker Technologies</cite></footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="text-center section-title">About Me</h2>
+      <div class="about-content" data-aos="fade-up">
+        <p class="lead">I'm a passionate .NET developer with expertise in building robust, scalable applications across mobile and web platforms.</p>
+        <p>With a strong foundation in computer science and years of hands-on experience, I specialize in creating seamless user experiences powered by efficient back-end systems. My approach combines clean code architecture with thoughtful UI design to deliver solutions that are both powerful and intuitive.</p>
+        <p>When I'm not coding, you can find me contributing to open-source projects, exploring new technologies, or mentoring aspiring developers.</p>
+        <div class="mt-4">
+          <a href="#contact" class="btn btn-primary me-3">Let's Connect</a>
+          <a href="Doc/Mercy_Okocha_Resume.pdf" class="btn btn-outline-secondary" download>
+            <i class="fas fa-file-pdf me-2"></i>View Full Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-light">
+    <div class="container">
+      <h2 class="text-center section-title">Get In Touch</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+              <div class="contact-info h-100">
+                <i class="fas fa-envelope"></i>
+                <h5>Email</h5>
+                <p><a href="mailto:mercychris026@gmail.com">mercychris026@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="contact-info h-100">
+                <i class="fas fa-phone-alt"></i>
+                <h5>Phone</h5>
+                <p><a href="tel:2897753074">(289) 775-3074</a></p>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="contact-info h-100">
+                <i class="fab fa-linkedin"></i>
+                <h5>LinkedIn</h5>
+                <p><a href="https://www.linkedin.com/in/mercychristopherokocha0239" target="_blank">Connect with me</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="social-links text-center mt-5" data-aos="fade-up">
+            <a href="https://github.com/mercychriz" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/mercychristopherokocha0239" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://stackoverflow.com/" target="_blank"><i class="fab fa-stack-overflow"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2025 Mercy Christopher Okocha. All Rights Reserved.</p>
+      <p class="text-muted small mt-2">Built with <i class="fas fa-heart text-danger"></i> and .NET</p>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    // Initialize AOS animation
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
